@@ -29,15 +29,7 @@ export default class App extends Component {
           "https://upload.wikimedia.org/wikipedia/commons/f/f2/Blucher_%28PSF%29.jpg",
       },
     ],
-    carts: [
-      {
-        id: 4,
-        value: 1,
-        name: "Sapatos 5",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/f/f2/Blucher_%28PSF%29.jpg",
-      },
-    ],
+    carts: [],
   };
 
   handleDelete = (id) => {
@@ -93,16 +85,7 @@ export default class App extends Component {
   };
   addToCart = (info) => {
     this.setState({
-      // cartProducts: this.state.cart.map((item) => { // hindi gumagana
-      //   if (item.id === data.id) {
-      //     return {
-      //       ...item,
-      //       quantity: item.quantity + data.quantity,
-      //     };
-      //   }
-      //   return item;
-      // }),
-      cartProducts: (this.state.carts = [...this.state.carts, info]), 
+      cartProducts: (this.state.carts = [...this.state.carts, info]),
     });
   };
 
@@ -114,16 +97,18 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Divider>Home</Divider>
+        <Divider>Products</Divider>
         <div>
           <div className="container">
             <NavBar totalCount={this.getCartsWithValue()} />
             <Counters
               counters={this.state.counters}
-              addtocart={this.addToCart}
+              addToCart={this.addToCart}
             />
           </div>
         </div>
+
+        {/* CART */}
         <Divider>Cart</Divider>
 
         <div className="cart">

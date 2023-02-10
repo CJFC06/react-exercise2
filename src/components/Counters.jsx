@@ -8,7 +8,7 @@ export default class Counters extends Component {
     return (
       <div>
         {counters.map((counter) => (
-          <Counter counter={counter} addToCart={addToCart} />
+          <Counter counter={counter} addToCart={addToCart} key={counter.id} />
         ))}
       </div>
     );

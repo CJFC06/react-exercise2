@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-import { Button, Image } from "antd";
+import { Button, Image, Card, Row, Col, Space } from "antd";
 
 export default class Counter extends Component {
   getName() {
@@ -10,23 +10,32 @@ export default class Counter extends Component {
   }
 
   render() {
-    const { product } = this.props;
+    const { counter, children } = this.props;
     return (
       <>
-        <div className="m-4">
+        {children}
+        <div className="m-4  ">
           {
             <>
-              <a href={this.props.counter.image}>{this.getName()}</a>
-              <br />
-              <Image width={200} src={this.props.counter.image} />
-              <br />
-              <Button
-                type="primary"
-                className="ms-2"
-                onClick={() => this.props.addToCart(product)}
+              <Card
+                title={this.getName()}
+                bordered={true}
+                hoverable
+                style={{
+                  width: 240,
+                  textAlign: "center",
+                }}
               >
-                Add to Cart<i className="fa-solid fa-cart-plus ms-2"></i>
-              </Button>
+                <Image width={200} src={this.props.counter.image} />
+                <p></p>
+                <Button
+                  type="primary"
+                  className="ms-2"
+                  onClick={() => this.props.addToCart(counter)}
+                >
+                  Add to Cart<i className="fa-solid fa-cart-plus ms-2"></i>
+                </Button>
+              </Card>
             </>
           }
         </div>
