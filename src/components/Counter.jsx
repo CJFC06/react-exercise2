@@ -1,57 +1,34 @@
+/* eslint-disable jsx-a11y/alt-text */
+
 import React, { Component } from "react";
+
+import { Button, Image } from "antd";
 
 export default class Counter extends Component {
   getName() {
-    return <h1>Big Name</h1>;
-  }
-
-  getClassName() {
-    if (this.props.counter.value > 0) {
-      return "badge bg-primary";
-    }
-    return "badge bg-warning text-dark";
-  }
-
-  formatText() {
-    if (this.props.counter.value > 0) {
-      return this.props.counter.value;
-    }
-    return "Zero";
-  }
-
-  componentWillUnmount() {
-    console.log("unmounting...");
+    return this.props.counter.name;
   }
 
   render() {
-    const { counter, children } = this.props;
-    console.log(this.props);
+    const { product } = this.props;
     return (
       <>
         <div className="m-4">
-          {/* <img src={this.props.counter.image}></img>
-        <a href={this.props.counter.image}>{this.getName()}</a> */}
-          {children}
-          <span className={this.getClassName()}>{this.formatText()}</span>
-          <button
-            onClick={() => this.props.onIncrement(counter.id)}
-            className="btn btn-primary ms-4"
-          >
-            +
-          </button>
-          <button
-            onClick={() => this.props.onDecrement(counter.id)}
-            className="btn btn-secondary ms-1"
-            disabled={counter.value === 0}
-          >
-            -
-          </button>
-          <button
-            onClick={() => this.props.onDelete(counter.id)}
-            className="btn btn-danger ms-1"
-          >
-            Delete
-          </button>
+          {
+            <>
+              <a href={this.props.counter.image}>{this.getName()}</a>
+              <br />
+              <Image width={200} src={this.props.counter.image} />
+              <br />
+              <Button
+                type="primary"
+                className="ms-2"
+                onClick={() => this.props.addToCart(product)}
+              >
+                Add to Cart<i className="fa-solid fa-cart-plus ms-2"></i>
+              </Button>
+            </>
+          }
         </div>
       </>
     );
